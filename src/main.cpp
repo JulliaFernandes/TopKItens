@@ -13,13 +13,18 @@ int main()
 
     ifstream file;
     unordered_map<string, WordInfo> glossary;
+    unordered_map<string, WordInfo> glossaryStopWords;
+
     //priority_queue<NodeTree*, vector<NodeTree*>, Compare> fifo;
     vector<WordInfo*> heap;
+
+    fillGlossaryStopWords(glossaryStopWords);
+    //printGlossary(glossaryStopWords);
 
     for(int i=1; i<=ARQ; i++){
         cout << "i" << i << endl;
         string fileName = "data/input" + to_string(i) + ".txt";
-        readText(fileName, file, glossary);
+        readText(fileName, file, glossary, glossaryStopWords);
     }
 
     cout << "==========================================================================" << endl;
@@ -29,7 +34,6 @@ int main()
 
     cout << "--------------------------------------------------------------------------" << endl;
 
-    cout << "Julliaaaaaaaaaa" << endl;
     endTime = clock();
     clock_t elapsedTime = endTime - startTime;
     double elapsedTimeMs = ((double)elapsedTime/CLOCKS_PER_SEC)*1000;

@@ -26,6 +26,12 @@ void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& gl
 
 bool emptyLine(const string linha);
 
-void readText(string fileName, ifstream &file, unordered_map<string, WordInfo> &glossary);
+void readText(string fileName, ifstream &file, unordered_map<string, WordInfo> &glossary, unordered_map<string, WordInfo> &glossaryStopWords);
+
+void fillGlossaryStopWords(unordered_map<string, WordInfo> &glossaryStopWords);
+
+void printGlossary(unordered_map<string,WordInfo> glossary);
+
+void treatments(string &str);
 
 #endif

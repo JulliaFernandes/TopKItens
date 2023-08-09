@@ -164,29 +164,35 @@ bool emptyLine(const string linha)
     return true;
 }
 
-void readText(string fileName, ifstream &file, unordered_map<string, WordInfo> &glossary)
+void readText(string fileName, ifstream &file, unordered_map<string, WordInfo> &glossary, unordered_map<string, WordInfo> &glossaryStopWords)
 {
   file.open(fileName);
-        if (!file.is_open()) {
-            cout << "Erro ao abrir o arquivo." << endl;
-            return;
-        }
-        regex exceptions("[a-zA-Z0-9'À-ÿ-]+");
+    if (!file.is_open()) {
+        cout << "Erro ao abrir o arquivo." << endl;
+        return;
+    }
+    regex exceptions("[a-zA-Z0-9'À-ÿ\\-“]+");
 
-        string line;
-        bool aux=false;
+    string line;
+    bool aux=false;
 
-        while (getline(file, line)){
-            sregex_iterator it(line.begin(), line.end(),exceptions); //criado um objeto que vai percorrer a frase salva em line e vai utlizar a expressao regular exceptions
-            sregex_iterator end; //objeto criado para representar o fim da frase salva em line
-            while (it != end) { //percorre todas as correspondências encontradas pela expressão regular na linha.
-                string word = it->str(); //aqui é pq cheguei a alguma coisa que nao é minha expressao regular, por exemplo, um espaco ou ponto, enfim ai passo ela para uma variavel de string
-                if(word.length() >= 2 && word[0] == '-' && word[1] == '-'){
-                        word.erase(0,2);
-                        if(word.length()==0){
-                            aux=true;
-                        }
-                }   
+    while (getline(file, line)){
+        sregex_iterator it(line.begin(), line.end(),exceptions); //criado um objeto que vai percorrer a frase salva em line e vai utlizar a expressao regular exceptions
+        sregex_iterator end; //objeto criado para representar o fim da frase salva em line
+        while (it != end) { //percorre todas as correspondências encontradas pela expressão regular na linha.
+            string word = it->str(); //aqui é pq cheguei a alguma coisa que nao é minha expressao regular, por exemplo, um espaco ou ponto, enfim ai passo ela para uma variavel de string
+            transform(word.begin(), word.end(), word.begin(), ::tolower);
+            if(glossaryStopWords.find(word) == glossaryStopWords.end()){//se nao achar no de StopWords posso adicionar ao meu glossary
+                // if( word.length() >= 2 && ((word[0] == '-' && word[1] == '-') || (word[0] == '“' && word[0] == '—')) ){
+                if ( word.length() >= 2 && (word[0] == '-' && word[1] == '-') ){
+                    word.erase(0,2);
+                    if(word.length()==0){
+                        aux=true;
+                    }
+                } 
+                else if(word.substr(0,3) == "“"){
+                    word.erase(0,3);
+                }
                 if(!aux){
                     transform(word.begin(), word.end(), word.begin(), ::tolower);
                     WordInfo newWord;
@@ -202,13 +208,85 @@ void readText(string fileName, ifstream &file, unordered_map<string, WordInfo> &
                     else glossary[word] = newWord;
                 }
                     
-                ++it;
-                aux=false;
+                
             }
-            //n++;
+            ++it;
+            aux=false;
         }
-        // glossary.erase("--");
-        glossary.erase("-");
+        //n++;
+    }
+    // glossary.erase("--");
+    glossary.erase("-");
+    glossary.erase("—");
 
-        file.close();
+    file.close();
 }
+
+void fillGlossaryStopWords(unordered_map<string, WordInfo> &glossaryStopWords)
+{
+    ifstream fileStopWords;
+
+    fileStopWords.open("data/stopwords.txt");
+    if (!fileStopWords.is_open()) {
+        cout << "Erro ao abrir o arquivo." << endl;
+        return;
+    }
+
+    string line;
+    while(getline(fileStopWords, line)){
+        if(!fileStopWords.eof()){
+            line.pop_back();
+        }
+        WordInfo newWord;
+        newWord.occurrences = 1;
+        newWord.word = line;
+
+        glossaryStopWords[line] = newWord;
+    }
+
+    fileStopWords.close();
+
+}
+
+void printGlossary(unordered_map<string,WordInfo> glossary)
+{
+  for (const auto& entry : glossary) {
+    cout << "Chave no map: " << entry.first << ": " << entry.second.occurrences << endl;
+  }
+}
+
+// void treatments(string &str)
+// {   
+//     char c = str[0];
+//     bool aux;
+
+//     switch (c)
+//     {
+//     case '-':
+//         if(str.length() >= 2 && str[0] == '-' && str[1] == '-'){
+//             str.erase(0,2);
+//             if(str.length()==0){
+//                 aux=true;
+//             }
+//         }
+//     break;
+
+//     case '“':
+//         if(str.length() >= 2){
+//             if(str[1] == '—'){
+//                 str.erase(0,2);
+//                 if(str.length() == 0){
+//                     aux = true;
+//                 }
+//             }
+//             else{
+//                 str.erase(0,1);
+//             }
+//         }
+//     break;
+    
+//     default:
+//         break;
+//     }
+    
+// }
