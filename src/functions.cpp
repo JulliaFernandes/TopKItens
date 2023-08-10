@@ -82,18 +82,7 @@ void heapify(vector<WordInfo*>& arr, int n, int i)
 
 void heapSort(vector<WordInfo*>& arr) 
 {
-    // int n = arr.size();
-
-    // for (int i = n / 2 - 1; i >= 0; i--)
-    //     heapify(arr, n, i);
-
-    // // Apenas uma iteração para garantir que o menor elemento esteja na primeira posição
-    // swap(arr[0], arr[n - 1]);
-
     int n = arr.size();
-
-    // for (int i = n / 2 - 1; i >= 0; i--)
-    //     heapify(arr, n, i);
 
     for (int i = n - 1; i > 0; i--) {
         swap(arr[0], arr[i]);
@@ -104,23 +93,23 @@ void heapSort(vector<WordInfo*>& arr)
 void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& glossary, int k) 
 {
     // Obter o número de elementos a serem inseridos (o mínimo entre k e o tamanho do glossary)
-    int elementosParaInserir = min(k, static_cast<int>(glossary.size()));
+    int num = min(k, static_cast<int>(glossary.size()));
 
     // Reservar espaço no vetor heap para evitar realocações desnecessárias
-    heap.reserve(elementosParaInserir);
+    heap.reserve(num);
 
     // Iterador para percorrer o mapa glossary
     auto it = glossary.begin();
 
-    // Inserir os primeiros elementosParaInserir elementos no heap
-    for (int i = 0; i < elementosParaInserir; ++i) {
+    // Inserir os primeiros num elementos no heap
+    for (int i = 0; i < num; ++i) {
         heap.push_back(const_cast<WordInfo*>(&it->second));
         ++it;
     }
 
     // Criar um heap mínimo com os elementos iniciais
-    for (int i = elementosParaInserir / 2 - 1; i >= 0; --i) {
-        heapify(heap, elementosParaInserir, i);
+    for (int i = num / 2 - 1; i >= 0; --i) {
+        heapify(heap, num, i);
     }
 
     // Percorrer o restante dos elementos da hash e atualizar o heap
@@ -130,7 +119,7 @@ void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& gl
             // Substituir o menor elemento no heap pelo elemento atual
             heap[0] = current;
             // Reorganizar o heap para manter a propriedade do heap mínimo
-            heapify(heap, elementosParaInserir, 0);
+            heapify(heap, num, 0);
         }
     }
 
@@ -176,46 +165,38 @@ void readText(string fileName, ifstream &file, unordered_map<string, WordInfo> &
     string line;
     bool aux=false;
 
-    while (getline(file, line)){
+    while (getline(file, line))
+    {
         sregex_iterator it(line.begin(), line.end(),exceptions); //criado um objeto que vai percorrer a frase salva em line e vai utlizar a expressao regular exceptions
         sregex_iterator end; //objeto criado para representar o fim da frase salva em line
-        while (it != end) { //percorre todas as correspondências encontradas pela expressão regular na linha.
+        
+        while (it != end)
+        { //percorre todas as correspondências encontradas pela expressão regular na linha.
             string word = it->str(); //aqui é pq cheguei a alguma coisa que nao é minha expressao regular, por exemplo, um espaco ou ponto, enfim ai passo ela para uma variavel de string
             transform(word.begin(), word.end(), word.begin(), ::tolower);
-            if(glossaryStopWords.find(word) == glossaryStopWords.end()){//se nao achar no de StopWords posso adicionar ao meu glossary
-                // if( word.length() >= 2 && ((word[0] == '-' && word[1] == '-') || (word[0] == '“' && word[0] == '—')) ){
+            
+            if(glossaryStopWords.find(word) == glossaryStopWords.end()) //se nao achar no de StopWords posso adicionar ao meu glossary
+            {
+
                 if ( word.length() >= 2 && (word[0] == '-' && word[1] == '-') ){
                     word.erase(0,2);
-                    if(word.length()==0){
-                        aux=true;
-                    }
+                    if(word.length()==0) aux=true;
                 } 
                 else if(word.substr(0,3) == "“"){
                     word.erase(0,3);
                 }
                 if(!aux){
-                    transform(word.begin(), word.end(), word.begin(), ::tolower);
                     WordInfo newWord;
                     newWord.occurrences = 1;
-                    //newWord.references.push_back(n);
                     newWord.word = word;
-                    if(glossary.find(word) != glossary.end())
-                    {   
-                        glossary[word].occurrences++;
-                        //int tam = glossary[word].references.size();
-                        //if(glossary[word].references[tam-1] != n) glossary[word].references.push_back(n);
-                    } 
+                    if(glossary.find(word) != glossary.end()) glossary[word].occurrences++;
                     else glossary[word] = newWord;
-                }
-                    
-                
+                } 
             }
             ++it;
             aux=false;
         }
-        //n++;
     }
-    // glossary.erase("--");
     glossary.erase("-");
     glossary.erase("—");
 
