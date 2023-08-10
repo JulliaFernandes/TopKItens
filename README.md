@@ -48,3 +48,5 @@ hash nela. Ao final ao fazer a combinação do uso de hash e da heap para manter
 - <strong>data/stopwords.txt:</strong> Stop words, como por exemplo, para artigo (a, o, as,os) e para conjunções (e, ou).
 
 ## 🔨Resolução do problema
+
+## 🔨 Funções
