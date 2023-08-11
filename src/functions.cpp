@@ -111,9 +111,10 @@ void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& gl
     for (int i = num / 2 - 1; i >= 0; --i) {
         heapify(heap, num, i);
     }
-
+    
     // Percorrer o restante dos elementos da hash e atualizar o heap
-    for (; it != glossary.end(); ++it) {
+    while(it!=glossary.end()){
+    // for (; it != glossary.end(); ++it) {
         WordInfo* current = const_cast<WordInfo*>(&it->second);
         if (current->occurrences > heap[0]->occurrences) {
             // Substituir o menor elemento no heap pelo elemento atual
@@ -121,6 +122,7 @@ void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& gl
             // Reorganizar o heap para manter a propriedade do heap mínimo
             heapify(heap, num, 0);
         }
+        ++it;
     }
 
     // Ordenar o heap mínimo em ordem crescente (os k itens mais frequentes estarão no final do heap)
@@ -160,7 +162,7 @@ void readText(string fileName, ifstream &file, unordered_map<string, WordInfo> &
         cout << "Erro ao abrir o arquivo." << endl;
         return;
     }
-    regex exceptions("[a-zA-Z0-9'À-ÿ\\-“]+");
+    regex exceptions("[a-zA-Z0-9'À-ÿ\\-“”]+");
 
     string line;
     bool aux=false;
@@ -182,7 +184,18 @@ void readText(string fileName, ifstream &file, unordered_map<string, WordInfo> &
                     word.erase(0,2);
                     if(word.length()==0) aux=true;
                 } 
-                else if(word.substr(0,3) == "“"){
+                
+                if(word[0] == '-'){
+                    word.erase(0,1);
+                }
+                if(word[word.size()-1] == '-'){
+                    word.pop_back();
+                }
+                if( (word.length() >= 3 && (word.substr(word.size()-3, word.size()-1) == "”" )) ){
+                    word.erase(word.size()-3, word.size()-1);
+                    //if(word.length()==0) aux=true;
+                }
+                if(word.length() >= 3 && word.substr(0,3) == "“"){
                     word.erase(0,3);
                 }
                 if(!aux){
