@@ -20,13 +20,13 @@
 - [Compilação e execução](#Compilação-e-execução)
 - [Contato](#Contato)
 
-##✒️Introdução
+## ✒️Introdução
 <p align="justify">
 Este é um programa desenvolvido em C++ para a disciplina de Algoritmos e Estruturas de Dados II. <br>
 Neste problema, é preciso encontrar os k itens mais valiosos de uma coleção de dados. Logo, utiliza-se o hash para contar a frequência de todos os itens, enquanto o heap se aplica na manutenção de uma lista dos k itens de maior valor.
 </p>
 
-##💻Objetivos
+## 💻Objetivos
 
 O objetivo desta atividade consiste em criar uma tabela de dispersão (hash) para contar a frequência de cada elemento tokenizado
 da coleção de dados de entrada, logo apos criar uma árvore de prioridades (heap) de tamanho k e inserir os primeiros k elementos do
@@ -38,8 +38,8 @@ hash nela. Ao final ao fazer a combinação do uso de hash e da heap para manter
 - As K palavras mais frequentes que deseja saber deve ser informado tambem, na varivel `K` presente no arquivo `main.cpp` linha XX.
 - Existe um arquivo de ```stop words``` para análise. Sendo as stop words artigos e conjunções que podem ser alteradas de acordo com a preferência do usuário.
 - A saída vai fornecer os dados após a análise do arquivo de entrada.
-
-##📄Arquivos
+ 
+## 📄Arquivos
 - <strong>Main.cpp:</strong> Leitura dos arquivos ```input1.txt```, ```stopwords.txt```,  tempo de execução do código e é realizada a chamada das funções necessários para o funcionamento.
 - <strong>header.cpp:</strong> Inclusão das bibliotecas e arquivos utilizados.
 - <strong>functions.hpp:</strong> Declaração das funções.
@@ -47,6 +47,6 @@ hash nela. Ao final ao fazer a combinação do uso de hash e da heap para manter
 - <strong>data/input.txt:</strong> Texto de entrada.
 - <strong>data/stopwords.txt:</strong> Stop words, como por exemplo, para artigo (a, o, as,os) e para conjunções (e, ou).
 
-##🔨Resolução do problema
+## 🔨Resolução do problema
 
-##🔨 Funções
+## 🔨 Funções
