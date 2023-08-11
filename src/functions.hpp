@@ -18,10 +18,6 @@ typedef struct WordInfo{
 
 } WordInfo;
 
-void heapify(vector<WordInfo*>& arr, int n, int i);
-
-void heapSort(vector<WordInfo*>& arr);
-
 void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& glossary, int k);
 
 bool emptyLine(const string linha);
@@ -32,6 +28,6 @@ void fillGlossaryStopWords(unordered_map<string, WordInfo> &glossaryStopWords);
 
 void printGlossary(unordered_map<string,WordInfo> glossary);
 
-void treatments(string &str);
+bool treatments(string &word);
 
 #endif
