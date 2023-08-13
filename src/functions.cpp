@@ -7,7 +7,7 @@ int Partition(vector<WordInfo*>& heap, int start, int end){
 	int pivot = end;
 	int j = start;
 	for(int i=start;i<end;++i){
-		if(heap[i]->occurrences > heap[pivot]->occurrences){
+		if(heap[i]->occurrences < heap[pivot]->occurrences){
 			swap(heap[i],heap[j]);
 			++j;
 		}
@@ -71,11 +71,11 @@ void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& gl
 
     int width = 20;
     cout << "+" << setfill('-') << setw(width - 2) << "+" << endl;
-    int j=1;
-    for (int i = (int)heap.size()-1; i >=0 ; --i) {
+    //int j=1;
+    for (int i = 0; i <(int)heap.size() ; ++i) {
         //cout << j << ") " << "\033[31m" << heap[i]->word << "\033[0m" << ": " << heap[i]->occurrences << endl;
-        cout << j << ") " << heap[i]->word << ": " << heap[i]->occurrences << endl;
-        j++;
+        cout << i+1 << ") " << heap[i]->word << ": " << heap[i]->occurrences << endl;
+        //j++;
     }
     cout << "+" << setfill('-') << setw(width - 2) << "+" << endl;
 
