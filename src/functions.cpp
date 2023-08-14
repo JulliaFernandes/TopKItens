@@ -30,6 +30,7 @@ void Quicksort(vector<WordInfo*>& heap, int start, int end ){
 void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& glossary, int k) {
     int num = min(k, static_cast<int>(glossary.size()));
     heap.reserve(num);
+    int i=0;
 
     auto it = glossary.begin();
     for (int i = 0; i < num; ++i) {
@@ -43,6 +44,7 @@ void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& gl
             heap[0] = current;
 
             // Reorganizar o heap usando o afundamento (sink) HEAPIFY
+            //int index = num;
             int index = 0;
             int n = num; // Tamanho atual do heap
             while (true) {
@@ -57,6 +59,8 @@ void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& gl
                     smallest = rightChild;
 
                 if (smallest != index) {
+                    i++;
+                    cout << "Esse: " << heap[index]->word << ": " << heap[index]->occurrences << " trocou por: " << heap[smallest]->word << ": " << heap[smallest]->occurrences << endl;
                     std::swap(heap[index], heap[smallest]);
                     index = smallest;
                 } else {
@@ -67,7 +71,7 @@ void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& gl
         ++it;
     }
 
-    Quicksort(heap, 0, heap.size()-1);
+    //Quicksort(heap, 0, heap.size()-1);
 
     int width = 20;
     cout << "+" << setfill('-') << setw(width - 2) << "+" << endl;
@@ -78,6 +82,7 @@ void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& gl
         //j++;
     }
     cout << "+" << setfill('-') << setw(width - 2) << "+" << endl;
+    cout << "I: " << i << endl;
 
 }
 

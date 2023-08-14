@@ -27,6 +27,8 @@ int main()
         readText(fileName, file, glossary, glossaryStopWords);
     }
 
+
+    cout << "TAM: " << glossary.size() << endl;
     cout << "==========================================================================" << endl;
     cout << "\t*** Palavras mais frequentes ***" << endl;
     cout << setw(6) << "WORD" << " | " << setw(8) << "FREQUENCY" << endl;
