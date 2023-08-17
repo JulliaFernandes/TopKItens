@@ -57,8 +57,12 @@ Logo apos todos os textos terem sido lidos e as palavras terem sido devidamente 
 ## Estruturas utlizadas
 <h2>Regex</h2>
 As expressoes regulares vem exatamente com o intuito de serem usadas em textos para manipular e encontrar padroes, são muito utlizadas para achar palavras reservadas e tokens especificos, sendo isso exataemente oque é preciso para a realização dessa atividade.
-Na definição de uma regex podemos utilizar dois tipos de caracteres: os literais, usados normalmente em strings, e os metacaracteres, que fazem com que a regex possa processar e manipular informações e trabalha  tambem com agrupamento, os utilizados nessa atividade foi o metacaractere: `+` e tambem o agrupamento para considerar palavras minusculas, maiusculas e numeros.
-O Regex foi usado no contexto no qual iria processar somente as palavras que eram consideradas expressoes regulares, isso é todas as palvras do texto em exceto os caracteres de pontuação.
+Na definição de uma regex podemos utilizar dois tipos de caracteres: os literais, usados normalmente em strings, e os metacaracteres, que fazem com que a regex possa processar e manipular informações e trabalha  tambem com agrupamento entre varios outros, os utilizados nessa atividade foi o metacaractere: `+`, para considerar mais de um carctere ate que chegue em algum que não é uma expressão regular, e tambem o agrupamento para considerar palavras minusculas, maiusculas e numeros.
+O Regex foi usado no contexto no qual iria processar somente as palavras que eram consideradas expressoes regulares, isso é todas as palvras do texto em exceto os caracteres de pontuação.<br>
+
+O regex utilizado para essa atividade é: `("[a-zA-Z0-9'À-ÿ\\-“”]+")`, ele ira englobar as letras de `a` à `z` em minúsculo e o `A` à `Z` em maiusculo, os numeros de 0 à 9 e as palavras que forem acentuadas tambem, e somente alguns caractres especiais que é feito o tratamento durante o programa, como `“”` e tambem o `-`, o `+` como explicado acima é para continuar considerando as outras além da primeira que encontrar no Regex. <br>
+
+A complpexidade do Regex é de O(n) pois eles sao compilados por meio de DFA (Deterministic Finite Automata) que ao ser compilada em uma string tem custo constante.
 <br>
 
 <h2>Unordered_map</h2>
@@ -68,6 +72,8 @@ Unordered_map internamente é implementado usando Hash Table , a chave fornecida
 Um unordered_map é um tipo de contêiner associativo que armazena pares de chave-valor, onde as chaves são exclusivas. Ele oferece operações de pesquisa, inserção e remoção de elementos com um tempo médio constante. A ordem dos elementos não segue uma sequência específica. Esses contêineres armazenam itens resultantes da combinação de valores de chave e valores mapeados.
 
 Internamente, o unordered_map é implementado utilizando uma Tabela de Hash. A chave fornecida para a associação é transformada em índices na tabela hash por meio de uma função de hash. Por essa razão, o desempenho dessa estrutura de dados depende da eficiência da função de hash. Em média, os custos de busca, inserção e exclusão na tabela de hash são de ordem O(1). No pior caso, a complexidade varia de O(1) a O(n).
+
+ Os elementos de um contêiner associativo não ordenado são organizados em baldes. Chaves com o mesmo código hash aparecem no mesmo bucket com outras palavras para os casos que ocorrem colisões, internamente o unordered_map trata de maneira que usa o encademaneto de colisões ou seja ele inclui a criação de buckets que ira conter os dados.
 
 <h2>Heap e Heapify</h2>
 Um heap é uma estrutura de dados que mantém uma coleção de elementos com uma propriedade especial de prioridade.Essa propriedade garante que em um heap máximo (onde o elemento de maior prioridade está no topo), cada nó pai tem um valor maior ou igual aos seus filhos(2n+1 e 2n+2). No caso de um heap mínimo (onde o elemento de menor prioridade está no topo), cada nó pai tem um valor menor ou igual aos seus filhos. Essa propriedade garante que o elemento de maior (ou menor) prioridade possa ser acessado e removido eficientemente, a propriedade de heap é que define a ordem dos elementos em relação aos seus pais e filhos e se aplica ao nó raiz, então no caso de um heap minimo, o elemento na posição zero do vetor é oque sera frequentemente comparado.
@@ -95,6 +101,7 @@ A partir dessa atividade foi possivel aprender novas maneiras de otimização na
 - https://pt.wikipedia.org/wiki/Express%C3%A3o_regular
 - https://www.alura.com.br/artigos/regex-c-sharp-utilizar-expressoes-regulares#:~:text=em%20um%20CPF.-,Ok%2C%20mas%20como%20funcionam%20as%20regex%3F,acordo%20com%20a%20leitura%20ocidental).
 - https://www.geeksforgeeks.org/unordered_map-in-cpp-stl/
+- https://stackoverflow.com/questions/21518704/how-does-c-stl-unordered-map-resolve-collisions
 
 
 ## 👾Compilação e execução
