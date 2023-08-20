@@ -30,7 +30,7 @@ void Quicksort(vector<WordInfo*>& heap, int start, int end ){
 void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& glossary, int k) {
     int num = min(k, static_cast<int>(glossary.size()));
     heap.reserve(num);
-    int i=0;
+    
 
     auto it = glossary.begin();
     for (int i = 0; i < num; ++i) {
@@ -59,8 +59,8 @@ void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& gl
                     smallest = rightChild;
 
                 if (smallest != index) {
-                    i++;
-                    cout << "Esse: " << heap[index]->word << ": " << heap[index]->occurrences << " trocou por: " << heap[smallest]->word << ": " << heap[smallest]->occurrences << endl;
+                   // i++;
+                    //cout << "Esse: " << heap[index]->word << ": " << heap[index]->occurrences << " trocou por: " << heap[smallest]->word << ": " << heap[smallest]->occurrences << endl;
                     std::swap(heap[index], heap[smallest]);
                     index = smallest;
                 } else {
@@ -74,15 +74,16 @@ void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& gl
     //Quicksort(heap, 0, heap.size()-1);
 
     int width = 20;
+    //int i=1;
     cout << "+" << setfill('-') << setw(width - 2) << "+" << endl;
     //int j=1;
     for (int i = 0; i <(int)heap.size() ; ++i) {
-        //cout << j << ") " << "\033[31m" << heap[i]->word << "\033[0m" << ": " << heap[i]->occurrences << endl;
-        cout << i+1 << ") " << heap[i]->word << ": " << heap[i]->occurrences << endl;
+        cout << i+1 << ") " << "\033[31m" << heap[i]->word << "\033[0m" << ": " << heap[i]->occurrences << endl;
+        //cout << i+1 << ") " << heap[i]->word << ": " << heap[i]->occurrences << endl;
         //j++;
+        //i++;
     }
     cout << "+" << setfill('-') << setw(width - 2) << "+" << endl;
-    cout << "I: " << i << endl;
 
 }
 

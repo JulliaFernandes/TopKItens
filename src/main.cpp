@@ -22,13 +22,10 @@ int main()
     //printGlossary(glossaryStopWords);
 
     for(int i=1; i<=ARQ; i++){
-        cout << "i" << i << endl;
         string fileName = "data/input" + to_string(i) + ".txt";
         readText(fileName, file, glossary, glossaryStopWords);
     }
 
-
-    cout << "TAM: " << glossary.size() << endl;
     cout << "==========================================================================" << endl;
     cout << "\t*** Palavras mais frequentes ***" << endl;
     cout << setw(6) << "WORD" << " | " << setw(8) << "FREQUENCY" << endl;
