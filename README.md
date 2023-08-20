@@ -80,8 +80,21 @@ Um heap é uma estrutura de dados que mantém uma coleção de elementos com uma
 Heapify é um processo fundamental na construção e manutenção de um heap. É uma operação que corrige a ordem dos elementos em um subárvore para garantir a propriedade de heap. Geralmente, ela é usada após a inserção de um novo elemento ou após a remoção do elemento de maior (ou menor) prioridade. O objetivo do heapify é reorganizar os elementos de forma que a propriedade de heap seja mantida.
 A priority_queue é uma implementação de heap fornecida pela biblioteca padrão do C++, que facilita a criação e o uso de heaps para armazenar elementos com base em suas prioridades.
 
-
 Um heap binário é uma estrutura de dados que mantém uma coleção de elementos com uma propriedade especial de prioridade.Essa propriedade garante que o elemento com a maior (ou menor) prioridade possa ser rapidamente acessado e removido. Sua implementação é feita seguindo a logica de que cada nó tera seus filhos sendo maiores que o mesmo, dessa maneira o nó de posicção zero na compração a ser feita é um elemento menor que a primeira posição do vetor. Uma boa estutura que realiza a implementação de heap é a priority_queue. 
+
+<div align="center">
+  <img src="imgs/minHeap.gif" alt="minHeap" width="500px">
+  <p align="center"><em> Exemplificação da comparação do minHeap </em></p>
+</div>
+
+<br>
+
+<div align="center">
+  <img src="imgs/minHeapify.png" alt="minHeap" width="500px">
+  <p align="center"><em> MinHeap </em></p>
+</div>
+
+
 
 ## 🔨 Funções
 - <strong>readText:</strong> Processamento dos textos baseados nas expressoes regulares.
@@ -90,12 +103,15 @@ Um heap binário é uma estrutura de dados que mantém uma coleção de elemento
 
 
 ## 🎯Resultados
-É mostrado ao usuario em formato de tabela as K palavras mais frequentes na cor vermelha e suas respectivas frequencias. 
-É possivel observar quais são os pais e os filhos, os filhos são: 2i + 1 e 2i+2, sendo o 'i' o numero do indice. Por exemplo, no indice 1 da imagem ao realizar as contas da os valores de numero 3 e 4 e podemos ver que esses indices são números maiores que o de indice 1 e com isso podemos ver que o funcionamento do Heap esta correto.
-<p>
+É mostrado ao usuario em formato de tabela as K palavras mais frequentes na cor vermelha e suas respectivas frequencias.<br>
+É possivel observar os elementos que atuam como pais e filhos dentro da estrutura. Os filhos são determinados por 2i + 1 e 2i + 2, em que 'i' representa o índice em questão. Tomando o índice 1 como exemplo, a aplicação da fórmula resulta nos valores 3 e 4, ambos maiores que o índice 1. Esse padrão confirma a correta funcionalidade da estrutura Heap.
 
-</p>
-<img src="imgs/Terminal.png" alt="Terminal" align="center">
+<div align="center">
+  <img src="imgs/Terminal.png" alt="Terminal" width="500px">
+  <p align="center"><em> Terminal do usuário </em></p>
+</div>
+
+
 
 ## ✔️Conclusão
 A partir dessa atividade foi possivel aprender novas maneiras de otimização na leitura de textos e mlehoras nessas praticas, foi possivel aprimorar os conehcimentos na tokenização e aprender tmabem novas estruturas para serem utlizdas como o Regex. Uma boa atividade que agrgou meus conheciemntos
