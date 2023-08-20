@@ -91,7 +91,11 @@ Um heap binário é uma estrutura de dados que mantém uma coleção de elemento
 
 ## 🎯Resultados
 É mostrado ao usuario em formato de tabela as K palavras mais frequentes na cor vermelha e suas respectivas frequencias. 
-Foto do Output
+É possivel observar quais são os pais e os filhos, os filhos são: 2i + 1 e 2i+2, sendo o 'i' o numero do indice. Por exemplo, no indice 1 da imagem ao realizar as contas da os valores de numero 3 e 4 e podemos ver que esses indices são números maiores que o de indice 1 e com isso podemos ver que o funcionamento do Heap esta correto.
+<p>
+
+</p>
+<img src="imgs/Terminal.png" alt="Terminal" align="center">
 
 ## ✔️Conclusão
 A partir dessa atividade foi possivel aprender novas maneiras de otimização na leitura de textos e mlehoras nessas praticas, foi possivel aprimorar os conehcimentos na tokenização e aprender tmabem novas estruturas para serem utlizdas como o Regex. Uma boa atividade que agrgou meus conheciemntos
