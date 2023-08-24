@@ -28,8 +28,7 @@ Neste problema, é preciso encontrar os `K` itens mais frequentes de uma coleç�
 
 ## 💻Objetivos
 
-O objetivo desta atividade consiste em criar uma tabela de dispersão (hash) para contar a frequência de cada elemento tokenizado da coleção de dados de entrada, logo apos criar uma árvore de prioridades (heap) de tamanho `K` e inserir os primeiros `K` elementos do
-hash nela. Ao final ao fazer a combinação do uso de hash e da heap para manter a lista dos `K` elementos com maiores valores presentes nos textos. Para alcançar esse objetivo, é fundamental realizar um cuidadoso projeto das estruturas de dados e dos algoritmos correspondentes, com o intuito de garantir o resultado esperado.
+O objetivo desta atividade consiste em criar uma tabela de dispersão (hash) para contar a frequência de cada elemento tokenizado da coleção de dados de entrada, logo apos criar uma árvore de prioridades (heap) de tamanho `K` e inserir os primeiros `K` elementos do hash nela. Ao final ao fazer a combinação do uso de hash e da heap para manter a lista dos `K` elementos com maiores valores presentes nos textos. Para alcançar esse objetivo, é fundamental realizar um cuidadoso projeto das estruturas de dados e dos algoritmos correspondentes, com o intuito de garantir o resultado esperado.
 
 <strong><h4>Condições impostas: </h4></strong>
 - A quantidade de textos a serem processados deve ser colocado na variável `ARQ`, presente na `main.cpp` linha 7.
@@ -48,23 +47,27 @@ hash nela. Ao final ao fazer a combinação do uso de hash e da heap para manter
 
 
 ## 🔨Resolução do problema
-Foi pensado em qual maneira poderia ser realizado a leitura dos texto de forma eficiente e rapida, pesquisando e trocando ideias com outros alunos foi descoberto uma expressão regular nominada Regex. 
+Foi pensado em qual maneira poderia ser realizado a leitura dos texto de forma eficiente e rapida, pesquisando e trocando ideias com outros alunos foi descoberto uma expressão regular nominada Regex.<br>
 Entao inicialmente é feito a abertura do arquivo `stopwords.txt` e armazenado todas as palavras em uma hash para ser usado mais a frente, logo apos é feito a abertura do texto a ser analisado, sua leitura é feito a modo de ler linha a linha e sendo processado pelo regex para obter somente as expressoes regulares, a cada hora que encontrasse algo não estivesse contido no regex era significado que de havia encontrado uma palavra e entao poderia colocar na hash, esse processamento é feito em todos os textos e fazendo a comparação tambem se a palavra encontrada nao é uma StopWord, pois se for nao ira ser adicioando a hash, pois devemos desconsiderar as palavras contidas no arquivo de StopWords. 
 Logo apos todos os textos terem sido lidos e as palavras terem sido devidamente contabilizadas e adicionadas à hash, é colocada as `K`, quantidade desejada pelo usuario, primeiras palavras da hash em um vetor e realizado a comparação com cada item restante da hash para obter somente as `K` mais frequentes na hash.
 
-
 ## Estruturas utlizadas
-<h2>Regex</h2>
+
+<details>
+
+<summary> <h2>Regex</h2> </summary> 
 As expressoes regulares vem exatamente com o intuito de serem usadas em textos para manipular e encontrar padroes, são muito utlizadas para achar palavras reservadas e tokens especificos, sendo isso exataemente oque é preciso para a realização dessa atividade.
 Na definição de uma regex podemos utilizar dois tipos de caracteres: os literais, usados normalmente em strings, e os metacaracteres, que fazem com que a regex possa processar e manipular informações e trabalha  tambem com agrupamento entre varios outros, os utilizados nessa atividade foi o metacaractere: `+`, para considerar mais de um caractere ate que chegue em algum que não é uma expressão regular, e tambem o agrupamento para considerar palavras minusculas, maiusculas e numeros.
 O Regex foi usado no contexto no qual iria processar somente as palavras que eram consideradas expressoes regulares, isso é todas as palvras do texto em exceto os caracteres de pontuação.<br>
 
 O regex utilizado para essa atividade é: `("[a-zA-Z0-9'À-ÿ\\-“”]+")`, ele ira englobar as letras de `a` à `z` em minúsculo e o `A` à `Z` em maiusculo, os numeros de 0 à 9 e as palavras que forem acentuadas tambem, e somente alguns caractres especiais que é feito o tratamento durante o programa, como `“”` e tambem o `-`, o `+` como explicado acima é para continuar considerando as outras além da primeira que encontrar no Regex. <br>
 
-A complpexidade do Regex é de O(n) pois eles sao compilados por meio de DFA (Deterministic Finite Automata) que ao ser compilada em uma string tem custo constante.
+A complexidade do Regex é de O(n) pois eles sao compilados por meio de DFA (Deterministic Finite Automata) que ao ser compilada em uma string tem custo constante.
 <br>
+</details>
 
-<h2>Unordered_map</h2>
+<details>
+<summary><h2>Unordered_map</h2></summary>
 <!-- é um contêiner associativo que contém pares de chave-valor com chaves exclusivas. Possuem as funções de pesquisa, inserção e remoção de elementos têm complexidade de tempo constante média. Eles nao sao ordenados em uma ordem especifica, os containers armazenam os elementos formados pela combinação de um valor de chave e um valor mapeado.
 Unordered_map internamente é implementado usando Hash Table , a chave fornecida para mapear é hash em índices de uma tabela hash, razão pela qual o desempenho da estrutura de dados depende muito da função hash, mas, em média, o custo de pesquisa, inserção e exclusão de a tabela de hash é O(1). Sendo no pior caso a complexidade indo de O(1) a O(n). -->
 
@@ -73,17 +76,19 @@ Um unordered_map é um tipo de contêiner associativo que armazena pares de chav
 Internamente, o unordered_map é implementado utilizando uma Tabela de Hash. A chave fornecida para a associação é transformada em índices na tabela hash por meio de uma função de hash. Por essa razão, o desempenho dessa estrutura de dados depende da eficiência da função de hash. Em média, os custos de busca, inserção e exclusão na tabela de hash são de ordem O(1). No pior caso, a complexidade varia de O(1) a O(n).
 
  Os elementos de um contêiner associativo não ordenado são organizados em baldes. Chaves com o mesmo código hash aparecem no mesmo bucket com outras palavras para os casos que ocorrem colisões, internamente o unordered_map trata de maneira que usa o encademaneto de colisões ou seja ele inclui a criação de buckets que ira conter os dados.
+</details>
 
-<h2>Heap e Heapify</h2>
-Um heap é uma estrutura de dados que mantém uma coleção de elementos com uma propriedade especial de prioridade.Essa propriedade garante que em um heap máximo (onde o elemento de maior prioridade está no topo), cada nó pai tem um valor maior ou igual aos seus filhos(2n+1 e 2n+2). No caso de um heap mínimo (onde o elemento de menor prioridade está no topo), cada nó pai tem um valor menor ou igual aos seus filhos. Essa propriedade garante que o elemento de maior (ou menor) prioridade possa ser acessado e removido eficientemente, a propriedade de heap é que define a ordem dos elementos em relação aos seus pais e filhos e se aplica ao nó raiz, então no caso de um heap minimo, o elemento na posição zero do vetor é oque sera frequentemente comparado.
-Heapify é um processo fundamental na construção e manutenção de um heap. É uma operação que corrige a ordem dos elementos em um subárvore para garantir a propriedade de heap. Geralmente, ela é usada após a inserção de um novo elemento ou após a remoção do elemento de maior (ou menor) prioridade. O objetivo do heapify é reorganizar os elementos de forma que a propriedade de heap seja mantida.
+<details>
+<summary><h2>Heap e Heapify</h2></summary>
+Um heap é uma estrutura de dados que mantém uma coleção de elementos com uma propriedade especial de prioridade.Essa propriedade garante que em um heap máximo (onde o elemento de maior prioridade está no topo), cada nó pai tem um valor maior ou igual aos seus filhos(2n+1 e 2n+2). No caso de um heap mínimo (onde o elemento de menor prioridade está no topo), cada nó pai tem um valor menor ou igual aos seus filhos. Essa propriedade garante que o elemento de maior (ou menor) prioridade possa ser acessado e removido eficientemente, a propriedade de heap é que define a ordem dos elementos em relação aos seus pais e filhos e se aplica ao nó raiz, então no caso de um heap minimo, o elemento na posição zero do vetor é oque sera frequentemente comparado.<br>
+Heapify é um processo fundamental na construção e manutenção de um heap. É uma operação que corrige a ordem dos elementos em um subárvore para garantir a propriedade de heap. Geralmente, ela é usada após a inserção de um novo elemento ou após a remoção do elemento de maior (ou menor) prioridade. O objetivo do heapify é reorganizar os elementos de forma que a propriedade de heap seja mantida.<br>
 A priority_queue é uma implementação de heap fornecida pela biblioteca padrão do C++, que facilita a criação e o uso de heaps para armazenar elementos com base em suas prioridades.
 
 Um heap binário é uma estrutura de dados que mantém uma coleção de elementos com uma propriedade especial de prioridade.Essa propriedade garante que o elemento com a maior (ou menor) prioridade possa ser rapidamente acessado e removido. Sua implementação é feita seguindo a logica de que cada nó tera seus filhos sendo maiores que o mesmo, dessa maneira o nó de posicção zero na compração a ser feita é um elemento menor que a primeira posição do vetor. Uma boa estutura que realiza a implementação de heap é a priority_queue. 
 
-A complexidade geral da operação de inserção no minHeap é O (log N).
-A complexidade de obter o valor mínimo é: O (1)
-
+A complexidade geral da operação de inserção no minHeap é O (Nlog K).<br>
+A complexidade do Heapify é de O (K).<br>
+A complexidade de obter o valor mínimo é: O (1)<br>
 
 <div align="center">
   <img src="imgs/minHeap.gif" alt="minHeap" width="500px">
@@ -97,7 +102,7 @@ A complexidade de obter o valor mínimo é: O (1)
   <p align="center"><em> MinHeap </em></p>
 </div>
 
-
+</details>
 
 ## 🔨 Funções
 - <strong>readText:</strong> Processamento dos textos baseados nas expressoes regulares.
