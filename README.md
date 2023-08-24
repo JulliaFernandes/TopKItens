@@ -31,9 +31,9 @@ Neste problema, é preciso encontrar os `K` itens mais frequentes de uma coleç�
 O objetivo desta atividade consiste em criar uma tabela de dispersão (hash) para contar a frequência de cada elemento tokenizado da coleção de dados de entrada, logo apos criar uma árvore de prioridades (heap) de tamanho `K` e inserir os primeiros `K` elementos do hash nela. Ao final ao fazer a combinação do uso de hash e da heap para manter a lista dos `K` elementos com maiores valores presentes nos textos. Para alcançar esse objetivo, é fundamental realizar um cuidadoso projeto das estruturas de dados e dos algoritmos correspondentes, com o intuito de garantir o resultado esperado.
 
 <strong><h4>Condições impostas: </h4></strong>
-- A quantidade de textos a serem processados deve ser colocado na variável `ARQ`, presente na `main.cpp` linha 7.
+- A quantidade de textos a serem processados deve ser colocado na variável `ARQ`, presente na `main.cpp` (linha 7).
+- - As K palavras mais frequentes que deseja saber deve ser informado tambem, na varivel `K` presente no arquivo `main.cpp` (linha 6).
 - O código realiza a leitura de arquivos ja existentes na pasta `data`, que devem ser intitulados como `input1`, `input2`..., ate a quantidade de arquivos desejada.
-- As K palavras mais frequentes que deseja saber deve ser informado tambem, na varivel `K` presente no arquivo `main.cpp` linha 6.
 - Existe um arquivo de ```stop words``` para análise. Sendo as stop words artigos e conjunções que podem ser alteradas de acordo com a preferência do usuário.
 - A saída vai fornecer os dados após a análise do arquivo de entrada.
  
@@ -132,9 +132,6 @@ A complexidade de obter o valor mínimo é: O (1)<br>
 </div>
 
 OBS: Resultado obtido pelo processamento dos textos que se encontram nos arquivos `input1.txt` e `input2.txt` localizados na pasta `data`
-
-
-
 
 ## ✔️Conclusão
 A partir dessa atividade foi possivel aprender novas maneiras de otimização na leitura de textos e mlehoras nessas praticas, foi possivel aprimorar os conehcimentos na tokenização e aprender tmabem novas estruturas para serem utlizdas como o Regex. Uma boa atividade que agrgou meus conheciementos e melhorou minhas praticas de programação.
