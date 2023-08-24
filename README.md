@@ -13,7 +13,7 @@
 - [Objetivos](#Objetivos)
 - [Arquivos](#Arquivos)
 - [Resolução do Problema](#Resolução-do-problema)
-- [Estruturas utilizadas](#Estruturas-utilizadas)
+- [Estruturas utilizadas](#estruturas-utilizadas)
 - [Funções](#Funções)
 - [Resultados](#Resultados)
 - [Conclusão](#Conclusão)
