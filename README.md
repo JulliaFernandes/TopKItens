@@ -23,19 +23,18 @@
 ## ✒️Introdução
 <p align="justify">
 Este é um programa desenvolvido em C++ para a disciplina de Algoritmos e Estruturas de Dados II. <br>
-Neste problema, é preciso encontrar os `K` itens mais frequentes de uma coleção de dados. Logo, utiliza-se o hash para contar a frequência de todos os itens, enquanto o heap se aplica na manutenção de uma lista dos K itens de maior valor.
+Neste problema, é preciso encontrar os `K` itens mais frequentes de uma coleção de dados. Logo, utiliza-se o hash para contar a frequência de todos os itens, e aplica o heap na função de manutenção de uma lista dos K itens de maior valor.
 </p>
 
 ## 💻Objetivos
 
-O objetivo desta atividade consiste em criar uma tabela de dispersão (hash) para contar a frequência de cada elemento tokenizado
-da coleção de dados de entrada, logo apos criar uma árvore de prioridades (heap) de tamanho `K` e inserir os primeiros `K` elementos do
+O objetivo desta atividade consiste em criar uma tabela de dispersão (hash) para contar a frequência de cada elemento tokenizado da coleção de dados de entrada, logo apos criar uma árvore de prioridades (heap) de tamanho `K` e inserir os primeiros `K` elementos do
 hash nela. Ao final ao fazer a combinação do uso de hash e da heap para manter a lista dos `K` elementos com maiores valores presentes nos textos. Para alcançar esse objetivo, é fundamental realizar um cuidadoso projeto das estruturas de dados e dos algoritmos correspondentes, com o intuito de garantir o resultado esperado.
 
 <strong><h4>Condições impostas: </h4></strong>
-- A quantidade de textos a serem processados deve ser colocado na variável `ARQ`, presente na `main.cpp` linha XX.
+- A quantidade de textos a serem processados deve ser colocado na variável `ARQ`, presente na `main.cpp` linha 7.
 - O código realiza a leitura de arquivos ja existentes na pasta `data`, que devem ser intitulados como `input1`, `input2`..., ate a quantidade de arquivos desejada.
-- As K palavras mais frequentes que deseja saber deve ser informado tambem, na varivel `K` presente no arquivo `main.cpp` linha XX.
+- As K palavras mais frequentes que deseja saber deve ser informado tambem, na varivel `K` presente no arquivo `main.cpp` linha 6.
 - Existe um arquivo de ```stop words``` para análise. Sendo as stop words artigos e conjunções que podem ser alteradas de acordo com a preferência do usuário.
 - A saída vai fornecer os dados após a análise do arquivo de entrada.
  
@@ -49,15 +48,15 @@ hash nela. Ao final ao fazer a combinação do uso de hash e da heap para manter
 
 
 ## 🔨Resolução do problema
-Foi pensado em qual maneira poderia ser realizado a leitura dos texto de forma eficiente e rapida, com isso foi achado uma expressão regular nominada Regex. 
-Entao inicialmente é feito a abertura do arquivo `stopwords.txt` e armazenado todas as palavras em uma hash para ser usado mais a frente, logo apos é feito a abertura do texto a ser analisado, com isso é lido linha a linha e sendo processado pelo regex para obter somente as expressoes regulares, a cada hora que encontrasse algo não estivesse contido no regex era significado que de havia encontrado uma palavra e entao poderia colocar na hash, esse processamento é feito em todos os textos e fazendo a comparação tambem se a palavra encontrada nao é uma StopWord, pois se for nao ira ser adicioando a hash, pois devemos desconsiderar as palavras contidas no arquivo de StopWords. 
-Logo apos todos os textos terem sido lidos e as palavras terem sido devidamente contabilizadas e adicionadas a hash é colocada as `K`, quantidade desejada pelo usuario, primeiras palavras da hash em um vetor e realizado a comparação com cada item restante da hash para obter somente as `K` mais frequentes na hash.
+Foi pensado em qual maneira poderia ser realizado a leitura dos texto de forma eficiente e rapida, pesquisando e trocando ideias com outros alunos foi descoberto uma expressão regular nominada Regex. 
+Entao inicialmente é feito a abertura do arquivo `stopwords.txt` e armazenado todas as palavras em uma hash para ser usado mais a frente, logo apos é feito a abertura do texto a ser analisado, sua leitura é feito a modo de ler linha a linha e sendo processado pelo regex para obter somente as expressoes regulares, a cada hora que encontrasse algo não estivesse contido no regex era significado que de havia encontrado uma palavra e entao poderia colocar na hash, esse processamento é feito em todos os textos e fazendo a comparação tambem se a palavra encontrada nao é uma StopWord, pois se for nao ira ser adicioando a hash, pois devemos desconsiderar as palavras contidas no arquivo de StopWords. 
+Logo apos todos os textos terem sido lidos e as palavras terem sido devidamente contabilizadas e adicionadas à hash, é colocada as `K`, quantidade desejada pelo usuario, primeiras palavras da hash em um vetor e realizado a comparação com cada item restante da hash para obter somente as `K` mais frequentes na hash.
 
 
 ## Estruturas utlizadas
 <h2>Regex</h2>
 As expressoes regulares vem exatamente com o intuito de serem usadas em textos para manipular e encontrar padroes, são muito utlizadas para achar palavras reservadas e tokens especificos, sendo isso exataemente oque é preciso para a realização dessa atividade.
-Na definição de uma regex podemos utilizar dois tipos de caracteres: os literais, usados normalmente em strings, e os metacaracteres, que fazem com que a regex possa processar e manipular informações e trabalha  tambem com agrupamento entre varios outros, os utilizados nessa atividade foi o metacaractere: `+`, para considerar mais de um carctere ate que chegue em algum que não é uma expressão regular, e tambem o agrupamento para considerar palavras minusculas, maiusculas e numeros.
+Na definição de uma regex podemos utilizar dois tipos de caracteres: os literais, usados normalmente em strings, e os metacaracteres, que fazem com que a regex possa processar e manipular informações e trabalha  tambem com agrupamento entre varios outros, os utilizados nessa atividade foi o metacaractere: `+`, para considerar mais de um caractere ate que chegue em algum que não é uma expressão regular, e tambem o agrupamento para considerar palavras minusculas, maiusculas e numeros.
 O Regex foi usado no contexto no qual iria processar somente as palavras que eram consideradas expressoes regulares, isso é todas as palvras do texto em exceto os caracteres de pontuação.<br>
 
 O regex utilizado para essa atividade é: `("[a-zA-Z0-9'À-ÿ\\-“”]+")`, ele ira englobar as letras de `a` à `z` em minúsculo e o `A` à `Z` em maiusculo, os numeros de 0 à 9 e as palavras que forem acentuadas tambem, e somente alguns caractres especiais que é feito o tratamento durante o programa, como `“”` e tambem o `-`, o `+` como explicado acima é para continuar considerando as outras além da primeira que encontrar no Regex. <br>
@@ -82,6 +81,9 @@ A priority_queue é uma implementação de heap fornecida pela biblioteca padrã
 
 Um heap binário é uma estrutura de dados que mantém uma coleção de elementos com uma propriedade especial de prioridade.Essa propriedade garante que o elemento com a maior (ou menor) prioridade possa ser rapidamente acessado e removido. Sua implementação é feita seguindo a logica de que cada nó tera seus filhos sendo maiores que o mesmo, dessa maneira o nó de posicção zero na compração a ser feita é um elemento menor que a primeira posição do vetor. Uma boa estutura que realiza a implementação de heap é a priority_queue. 
 
+Custo do e Heap é de O(nLogn) 
+
+
 <div align="center">
   <img src="imgs/minHeap.gif" alt="minHeap" width="500px">
   <p align="center"><em> Exemplificação da comparação do minHeap </em></p>
@@ -100,6 +102,7 @@ Um heap binário é uma estrutura de dados que mantém uma coleção de elemento
 - <strong>readText:</strong> Processamento dos textos baseados nas expressoes regulares.
 - <strong>treatments:</strong> É uma função para o tratamento de caracteres que deveriam ser desconsiderados nos texto.
 - <strong>fillHeap:</strong> É a função que ira adicionar as K primeiras da hash em um vetor e feita a comparação com o restante da hash, o processo de adicionar na hash e fazer a comparação é feita com o heapify do heap_sort, logo depois de comparado com todos os elementos da hash é chamado uma função de ordenação para o vetor, o QuickSort ja que é um dos melhores algoritmos de ordenação e com uma boa complexidade.
+- <strong>fillGlossaryStopWords:</strong> É o utilizado para ler o arquivo de `stopwords.txt` e armazenar cada palavra em uma hash.
 
 
 ## 🎯Resultados
@@ -114,7 +117,7 @@ Um heap binário é uma estrutura de dados que mantém uma coleção de elemento
 
 
 ## ✔️Conclusão
-A partir dessa atividade foi possivel aprender novas maneiras de otimização na leitura de textos e mlehoras nessas praticas, foi possivel aprimorar os conehcimentos na tokenização e aprender tmabem novas estruturas para serem utlizdas como o Regex. Uma boa atividade que agrgou meus conheciemntos
+A partir dessa atividade foi possivel aprender novas maneiras de otimização na leitura de textos e mlehoras nessas praticas, foi possivel aprimorar os conehcimentos na tokenização e aprender tmabem novas estruturas para serem utlizdas como o Regex. Uma boa atividade que agrgou meus conheciementos e melhorou minhas praticas de programação.
 
 ## ✔️Referências
 - https://www.geeksforgeeks.org/regex-regular-expression-in-c/
