@@ -33,7 +33,7 @@ O objetivo desta atividade consiste em criar uma tabela de dispersão (hash) par
 
 <strong><h4>Condições impostas: </h4></strong>
 - A quantidade de textos a serem processados deve ser colocado na variável `ARQ`, presente na `main.cpp` (linha 7).
-- - As K palavras mais frequentes que deseja saber deve ser informado tambem, na varivel `K` presente no arquivo `main.cpp` (linha 6).
+- As K palavras mais frequentes que deseja saber deve ser informado tambem, na varivel `K` presente no arquivo `main.cpp` (linha 6).
 - O código realiza a leitura de arquivos ja existentes na pasta `data`, que devem ser intitulados como `input1`, `input2`..., ate a quantidade de arquivos desejada.
 - Existe um arquivo de ```stop words``` para análise. Sendo as stop words artigos e conjunções que podem ser alteradas de acordo com a preferência do usuário.
 - A saída vai fornecer os dados após a análise do arquivo de entrada.
