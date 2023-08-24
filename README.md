@@ -105,9 +105,9 @@ A complexidade de obter o valor mínimo é: O (1)<br>
 </details>
 
 ## 🔨 Funções
-- <strong>readText:</strong> Processamento dos textos baseados nas expressoes regulares.
-- <strong>treatments:</strong> É uma função para o tratamento de caracteres que deveriam ser desconsiderados nos texto.
-- <strong>fillHeap:</strong> É a função que ira adicionar as K primeiras da hash em um vetor e feita a comparação com o restante da hash, o processo de adicionar na hash e fazer a comparação é feita com o heapify do heap_sort, logo depois de comparado com todos os elementos da hash é chamado uma função de ordenação para o vetor, o QuickSort ja que é um dos melhores algoritmos de ordenação e com uma boa complexidade.
+- <strong>readText:</strong> Processamento dos textos baseados nas expressoes regulares fazendo a leitura linha a linha e contabilizando na hash as palavras corretas.
+- <strong>treatments:</strong> É uma função para o tratamento de caracteres que deveriam ser desconsiderados nos texto, é chamada a cada palavra lida do texto para fazer a conferencia dos tratamentos a serem desconsidarados.
+- <strong>fillHeap:</strong> É a função que ira adicionar as K primeiras da hash em um vetor e feita a comparação com o restante da hash atraves de um `iterator`, o processo de adicionar na hash e fazer a comparação é feita com o heapify do heap_sort, fazendo a comparação se a proxima palavra da hash é menor do que a que se encontra na primeira posição se em caso afirmativo é realizado a troca vendo tambem se os filhos dessa mesma posição são menores que o mesmo, pois se caso forem é  realizado a troca tambem.
 - <strong>fillGlossaryStopWords:</strong> É o utilizado para ler o arquivo de `stopwords.txt` e armazenar cada palavra em uma hash.
 
 
@@ -119,6 +119,9 @@ A complexidade de obter o valor mínimo é: O (1)<br>
   <img src="imgs/Terminal.png" alt="Terminal" width="500px">
   <p align="center"><em> Terminal do usuário </em></p>
 </div>
+
+OBS: Resultado obtido pelo processamento dos textos que se encontram nos arquivos `input1.txt` e `input2.txt` localizados na pasta `data`
+
 
 
 
