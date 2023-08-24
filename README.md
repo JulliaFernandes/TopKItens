@@ -64,6 +64,11 @@ O regex utilizado para essa atividade é: `("[a-zA-Z0-9'À-ÿ\\-“”]+")`, ele
 
 A complexidade do Regex é de O(n) pois eles sao compilados por meio de DFA (Deterministic Finite Automata) que ao ser compilada em uma string tem custo constante.
 <br>
+
+<div align="center">
+  <img src="imgs/carbon.png" alt="regex" width="500px">
+  <p align="center"><em> Exemplificação do Regex utlizado </em></p>
+</div>
 </details>
 
 <details>
@@ -76,6 +81,12 @@ Um unordered_map é um tipo de contêiner associativo que armazena pares de chav
 Internamente, o unordered_map é implementado utilizando uma Tabela de Hash. A chave fornecida para a associação é transformada em índices na tabela hash por meio de uma função de hash. Por essa razão, o desempenho dessa estrutura de dados depende da eficiência da função de hash. Em média, os custos de busca, inserção e exclusão na tabela de hash são de ordem O(1). No pior caso, a complexidade varia de O(1) a O(n).
 
  Os elementos de um contêiner associativo não ordenado são organizados em baldes. Chaves com o mesmo código hash aparecem no mesmo bucket com outras palavras para os casos que ocorrem colisões, internamente o unordered_map trata de maneira que usa o encademaneto de colisões ou seja ele inclui a criação de buckets que ira conter os dados.
+
+ <div align="center">
+  <img src="imgs/unordered_map.png" alt="unordered_map" width="500px">
+  <p align="center"><em> Exemplificação da sintaxe do unordered_map </em></p>
+</div>
+
 </details>
 
 <details>
