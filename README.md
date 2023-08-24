@@ -13,6 +13,7 @@
 - [Objetivos](#Objetivos)
 - [Arquivos](#Arquivos)
 - [Resolução do Problema](#Resolução-do-problema)
+- [Estruturas utilizadas](#Estruturas-utilizadas)
 - [Funções](#Funções)
 - [Resultados](#Resultados)
 - [Conclusão](#Conclusão)
@@ -51,7 +52,7 @@ Foi pensado em qual maneira poderia ser realizado a leitura dos texto de forma e
 Entao inicialmente é feito a abertura do arquivo `stopwords.txt` e armazenado todas as palavras em uma hash para ser usado mais a frente, logo apos é feito a abertura do texto a ser analisado, sua leitura é feito a modo de ler linha a linha e sendo processado pelo regex para obter somente as expressoes regulares, a cada hora que encontrasse algo não estivesse contido no regex era significado que de havia encontrado uma palavra e entao poderia colocar na hash, esse processamento é feito em todos os textos e fazendo a comparação tambem se a palavra encontrada nao é uma StopWord, pois se for nao ira ser adicioando a hash, pois devemos desconsiderar as palavras contidas no arquivo de StopWords. 
 Logo apos todos os textos terem sido lidos e as palavras terem sido devidamente contabilizadas e adicionadas à hash, é colocada as `K`, quantidade desejada pelo usuario, primeiras palavras da hash em um vetor e realizado a comparação com cada item restante da hash para obter somente as `K` mais frequentes na hash.
 
-## Estruturas utlizadas
+## 🗂️Estruturas utlizadas
 
 <details>
 
