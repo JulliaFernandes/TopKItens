@@ -2,31 +2,6 @@
 
 using namespace std;
 
-int Partition(vector<WordInfo*>& heap, int start, int end){
-	
-	int pivot = end;
-	int j = start;
-	for(int i=start;i<end;++i){
-		if(heap[i]->occurrences < heap[pivot]->occurrences){
-			swap(heap[i],heap[j]);
-			++j;
-		}
-	}
-	swap(heap[j],heap[pivot]);
-	return j;
-	
-}
-
-void Quicksort(vector<WordInfo*>& heap, int start, int end ){
-
-	if(start<end){
-		int p = Partition(heap,start,end);
-		Quicksort(heap,start,p-1);
-		Quicksort(heap,p+1,end);
-	}
-	
-}
-
 void fillHeap(vector<WordInfo*>& heap, const unordered_map<string, WordInfo>& glossary, int k) {
     int num = min(k, static_cast<int>(glossary.size()));
     heap.reserve(num);

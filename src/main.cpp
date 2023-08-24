@@ -3,8 +3,8 @@
 
 using namespace std;
 
-#define k 20
-#define ARQ 2
+#define k 20 //QUANTIDADE DE ELEMENTOS DE MAIOR FREQUENCIA
+#define ARQ 2 //QUANTIDADE DE ARQUIVOS A SEREM PROCESSADOS
 
 int main()
 {
