@@ -81,7 +81,8 @@ A priority_queue é uma implementação de heap fornecida pela biblioteca padrã
 
 Um heap binário é uma estrutura de dados que mantém uma coleção de elementos com uma propriedade especial de prioridade.Essa propriedade garante que o elemento com a maior (ou menor) prioridade possa ser rapidamente acessado e removido. Sua implementação é feita seguindo a logica de que cada nó tera seus filhos sendo maiores que o mesmo, dessa maneira o nó de posicção zero na compração a ser feita é um elemento menor que a primeira posição do vetor. Uma boa estutura que realiza a implementação de heap é a priority_queue. 
 
-Custo do e Heap é de O(nLogn) 
+A complexidade geral da operação de inserção no minHeap é O (log N).
+A complexidade de obter o valor mínimo é: O (1)
 
 
 <div align="center">
